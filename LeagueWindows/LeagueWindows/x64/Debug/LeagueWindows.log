@@ -1,0 +1,5 @@
+﻿  HUD.cpp
+C:\Users\irawo\Source\Repos\LeagueWindows\LeagueWindows\HUD.cpp(36,18): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\irawo\Source\Repos\LeagueWindows\LeagueWindows\HUD.cpp(49,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\irawo\Source\Repos\LeagueWindows\LeagueWindows\HUD.cpp(50,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  LeagueWindows.vcxproj -> C:\Users\irawo\Source\Repos\LeagueWindows\x64\Debug\LeagueWindows.exe
