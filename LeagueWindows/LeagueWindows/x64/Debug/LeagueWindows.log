@@ -1,5 +1,15 @@
-﻿  HUD.cpp
-C:\Users\irawo\Source\Repos\LeagueWindows\LeagueWindows\HUD.cpp(36,18): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\irawo\Source\Repos\LeagueWindows\LeagueWindows\HUD.cpp(49,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\irawo\Source\Repos\LeagueWindows\LeagueWindows\HUD.cpp(50,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  LeagueWindows.vcxproj -> C:\Users\irawo\Source\Repos\LeagueWindows\x64\Debug\LeagueWindows.exe
+﻿  Banana.cpp
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Banana.cpp(43,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Banana.cpp(44,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Engine.cpp
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Engine.cpp(59,24): warning C4244: 'argument': conversion from 'double' to 'Uint32', possible loss of data
+  HUD.cpp
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(36,18): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(49,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(50,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Interfaces.cpp
+  main.cpp
+  Scene.cpp
+  Utility.cpp
+  Generating Code...
+  LeagueWindows.vcxproj -> C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\x64\Debug\LeagueWindows.exe
