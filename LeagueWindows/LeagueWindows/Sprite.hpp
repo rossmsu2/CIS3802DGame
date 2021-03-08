@@ -5,6 +5,7 @@
 #include <SDL2/SDL_image.h>
 #include "Interfaces.hpp"
 #include "Utility.hpp"
+#include <string>
 
 class Sprite : public DUGameObject {
 	public:

@@ -24,17 +24,25 @@
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Interfaces.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="Wizard.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Banana.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="Interfaces.hpp" />
+    <ClInclude Include="Projectile.hpp" />
     <ClInclude Include="Properties.hpp" />
     <ClInclude Include="Scene.hpp" />
+    <ClInclude Include="Sprite.hpp" />
     <ClInclude Include="Utility.hpp" />
+    <ClInclude Include="Wizard.hpp" />
+    <ClInclude Include="Zombie.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
