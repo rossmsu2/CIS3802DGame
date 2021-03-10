@@ -1,6 +1,9 @@
 #include "Engine.hpp"
 #include "Banana.hpp"
 #include "HUD.hpp"
+#include "Sprite.hpp"
+#include "Wizard.hpp"
+#include "Zombie.hpp"
 #include <SDL.h>
 
 int main(int argc, char** argv){
@@ -14,7 +17,22 @@ int main(int argc, char** argv){
 	// Create an engine.  Must happen early, creates the renderer.
 	Engine engine(1024, 768);
 
+	//Sprite* wiz = new Sprite("../assets/wizard.png");
+	Wizard* Bob = new Wizard();
+	one.addUpdateable(Bob->wizard);
+	one.addDrawable(Bob->wizard);
+	auto Bob_up = [Bob](double delta) { Bob->up(delta); };
+	auto Bob_down = [Bob](double delta) { Bob->down(delta); };
+	one.addKeyEvent(SDLK_w, Bob_up);
+	one.addKeyEvent(SDLK_s, Bob_down);
+
+	Zombie* Fred = new Zombie();
+	one.addUpdateable(Fred->zombie);
+	one.addDrawable(Fred->zombie);
+	Fred->left(0.0);
+
 	// Make a banana and add to scene. Should update and draw.
+	/*
 	Banana* b = new Banana();
 	one.addUpdateable(b);
 	one.addDrawable(b);
@@ -26,7 +44,7 @@ int main(int argc, char** argv){
 	one.addKeyEvent( SDLK_a, b_left );
 	one.addKeyEvent( SDLK_d, b_right );
 	one.addKeyEvent( SDLK_s, b_down );
-
+	*/
 	// Add the HUD
 	HUD* h = new HUD();
 	one.addUpdateable(h);

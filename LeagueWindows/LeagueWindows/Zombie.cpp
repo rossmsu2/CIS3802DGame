@@ -1,7 +1,15 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie() {}
-Zombie::Zombie(Sprite sprite) {}
-Zombie::~Zombie() {}
-void Zombie::update(double delta) {}
-void Zombie::draw() {}
+Zombie::Zombie() { 
+	zombie = new Sprite("../assets/zombie.png");
+}
+Zombie::Zombie(Sprite* sprite) {
+	zombie = sprite;
+}
+Zombie::~Zombie() {
+	zombie->~Sprite();
+}
+
+void Zombie::left(double delta) {
+	zombie->setVelocityX(-50);
+}

@@ -66,6 +66,18 @@ Sprite::~Sprite(){
 	SDL_FreeSurface(surface);
 }
 
+void Sprite::update(double delta) {
+	// So we stop getting the compiler warning for now.
+	position.setX(position.getX() + velocity.getX() * delta);
+	position.setY(position.getY() + velocity.getY() * delta);
+	if (position.getX() > 1024 - rect->w || position.getX() < 0) {
+		velocity.setX(-velocity.getX());
+	}
+	if (position.getY() > 768 - rect->h || position.getY() < 0) {
+		velocity.setY(-velocity.getY());
+	}
+}
+
 void Sprite::draw(){
 	SDL_Rect* dst = new SDL_Rect();
 	dst->x = position.getX();
@@ -73,4 +85,20 @@ void Sprite::draw(){
 	dst->w = rect->w;
 	dst->h = rect->h;
 	SDL_RenderCopy(Engine::getRenderer(), texture, NULL, dst);
+}
+
+void Sprite::setVelocityX(int x) {
+	velocity.setX(x);
+}
+
+void Sprite::setVelocityY(int y) {
+	velocity.setY(y);
+}
+
+void Sprite::setVelocityZ(int z) {
+	velocity.setZ(z);
+}
+
+Vector3 Sprite::getVelocity() {
+	return velocity;
 }

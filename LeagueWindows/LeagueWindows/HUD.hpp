@@ -15,7 +15,7 @@ class HUD : public DUGameObject {
 		void update(double delta);
 		void draw();	
 	private:
-		TTF_Font* stick;
+		TTF_Font* font;
 		SDL_Color color;
 		int elapsed;
 		std::random_device rd;
