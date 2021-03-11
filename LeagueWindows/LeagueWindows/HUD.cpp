@@ -2,16 +2,23 @@
 #include "HUD.hpp"
 #include <SDL_ttf.h>
 #include <random>
+#include <ctime>
 
 HUD::HUD(){
-	font = TTF_OpenFont("../assets/Mystical Snow.ttf", 48);
+	font = TTF_OpenFont("../assets/Mystical Snow.ttf", 32);
 	if(font == NULL){
 		SDL_Log("No font. %s", TTF_GetError());
 	}
 	color.r=0;
 	color.g=0;
 	color.b=0;
-	surface = TTF_RenderText_Solid(font, "FIREBALL", color); 
+	zombies = 0;
+	clockStart = std::chrono::steady_clock::now();
+	clockEnd = std::chrono::steady_clock::now();
+	elapsedTime = std::chrono::duration<float>(clockEnd - clockStart).count();
+	elapsedTime = round(elapsedTime * 100.0) / 100.0;
+	display = "Zombies Killed: " + std::to_string(zombies) + " Time: " + std::to_string(elapsedTime);
+	surface = TTF_RenderText_Solid(font, display.c_str(), color); 
 	if(surface == NULL){
 		SDL_Log("Can't create text. %s", SDL_GetError());
 	}
@@ -33,15 +40,15 @@ HUD::~HUD(){
 }
 
 void HUD::update(double delta){
-	elapsed += delta;
-	if(elapsed > 1){
-		color.r = uni(rng);
-		color.b = uni(rng);
-		color.g = uni(rng);
-		surface = TTF_RenderText_Solid(font, "FIREBALL", color); 
-		texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), surface);
-
-	}
+	color.r = uni(rng);
+	color.b = uni(rng);
+	color.g = uni(rng);
+	clockEnd = std::chrono::steady_clock::now();
+	elapsedTime = std::chrono::duration<float>(clockEnd - clockStart).count();
+	elapsedTime = round(elapsedTime * 100.0) / 100.0;
+	display = "Zombies Killed: " + std::to_string(zombies) + " Time: " + std::to_string(elapsedTime);
+	surface = TTF_RenderText_Solid(font, display.c_str(), color); 
+	texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), surface);
 }
 
 void HUD::draw(){
