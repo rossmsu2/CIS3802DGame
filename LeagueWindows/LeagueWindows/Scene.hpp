@@ -15,6 +15,7 @@ class Scene {
 		void addUpdateable(Updateable* obj);
 		void addDrawable(Drawable* obj);
 		void addKeyEvent(SDL_Keycode key, Callback fn);
+		void deleteKeyEvent(SDL_Keycode key);
 
 	private:
 		std::vector<Updateable*> updateables;

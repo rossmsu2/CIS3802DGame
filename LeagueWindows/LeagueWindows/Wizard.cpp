@@ -3,6 +3,7 @@
 
 Wizard::Wizard(){
 	wizard = new Sprite("../assets/wizard.png");
+	wizard->setPositionY(61);
 }
 Wizard::Wizard(Sprite* sprite) {
 	wizard = sprite;

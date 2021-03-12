@@ -40,9 +40,6 @@ HUD::~HUD(){
 }
 
 void HUD::update(double delta){
-	color.r = uni(rng);
-	color.b = uni(rng);
-	color.g = uni(rng);
 	clockEnd = std::chrono::steady_clock::now();
 	elapsedTime = std::chrono::duration<float>(clockEnd - clockStart).count();
 	elapsedTime = round(elapsedTime * 100.0) / 100.0;

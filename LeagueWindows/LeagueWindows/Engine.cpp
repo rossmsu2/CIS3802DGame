@@ -3,6 +3,10 @@
 #include "Scene.hpp"
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include "Zombie.hpp"
+#include "Fireball.hpp"
+#include <vector>
+#include "Wizard.hpp"
 
 // For linking purposes, we need to declare this static member in the cpp file.
 SDL_Renderer* Engine::renderer = nullptr;
@@ -36,6 +40,9 @@ Engine::~Engine(){
 }
 
 void Engine::run(){
+	std::vector<Fireball*> Balls;
+	std::vector<Zombie*> Freds;
+
 	if(currentScene == nullptr){
 		SDL_Log("No scene added yet to engine! - Aborting.");
 		return;
@@ -44,6 +51,15 @@ void Engine::run(){
 	SDL_Event event;
 	last = SDL_GetTicks();
 	cumulative = 0;
+	Wizard* Bob = new Wizard();
+	currentScene->addUpdateable(Bob->wizard);
+	currentScene->addDrawable(Bob->wizard);
+
+	auto Bob_up = [Bob](double delta) { Bob->up(delta); };
+	auto Bob_down = [Bob](double delta) { Bob->down(delta); };
+
+	currentScene->addKeyEvent(SDLK_w, Bob_up);
+	currentScene->addKeyEvent(SDLK_s, Bob_down);
 	while(!quit){
 		if(cumulative>=1000){
 			SDL_Log("Framerate is %f (%d frames).", (double)framecount / (cumulative / 1000), framecount);
@@ -61,8 +77,25 @@ void Engine::run(){
 			delta = current - last;
 		}
 
+		if ((rand() % 100 + 1) >= 95 && Freds.size() < 30) {
+			Zombie* z = new Zombie(new Sprite("../assets/zombie.png"), 950, rand() % 650 + 60);
+			z->left(0.0);
+			currentScene->addDrawable(z->zombie);
+			currentScene->addUpdateable(z->zombie);
+			Freds.push_back(z);
+		}
+
 		cumulative += delta;
 		double gameDelta = delta / 1000.0;
+
+		for (auto i = Balls.begin(); i != Balls.end(); i++) {
+			if ((*i)->getPosition().getX() >= 1020 - 50) {
+				Fireball* temp = (*i);
+				Balls.erase(i);
+				i = i - 1;
+				temp->~Fireball();
+			}
+		}
 
 		// Get events
 		while(SDL_PollEvent(&event) > 0){
@@ -71,12 +104,22 @@ void Engine::run(){
 			}
 
 			// Check for keyboard events
-			if(event.type == SDL_KEYDOWN || event.type == SDL_KEYUP){
+			if((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) && event.key.repeat == 0 ){
+				if (event.key.keysym.sym == SDLK_SPACE) {
+					if (Balls.size() < 20) {
+						Fireball* ball = new Fireball(Bob->wizard->getPosition());
+
+						 currentScene->addDrawable(ball);
+						 currentScene->addUpdateable(ball);
+						 Balls.push_back(ball);
+					}
+				}
 				for(auto f = currentScene->keyEvents.begin(); f != currentScene->keyEvents.end(); ++f){
 					if(event.key.keysym.sym == (*f).first){
 						(*f).second(gameDelta);
 						//SDL_Log("Dispatched event. %d, %f", delta, gameDelta);
 					}
+
 				}
 			}
 

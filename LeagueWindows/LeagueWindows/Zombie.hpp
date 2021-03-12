@@ -7,7 +7,7 @@
 #include "Utility.hpp"
 #include "Sprite.hpp"
 
-class Zombie {
+class Zombie{
 	public:
 		Zombie();
 		Zombie(Sprite* sprite);

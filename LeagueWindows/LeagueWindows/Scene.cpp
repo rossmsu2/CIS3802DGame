@@ -22,3 +22,11 @@ void Scene::addDrawable(Drawable* obj){
 void Scene::addKeyEvent(SDL_Keycode key, Callback fn){
 	keyEvents.push_back(std::make_pair(key, fn));	
 }
+
+void Scene::deleteKeyEvent(SDL_Keycode key) {
+    for (int i = 0; i < keyEvents.size(); i++) {
+        if (key == SDLK_SPACE) {
+            keyEvents.pop_back();
+        }
+    }
+}

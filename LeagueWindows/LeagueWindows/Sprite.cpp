@@ -71,10 +71,10 @@ void Sprite::update(double delta) {
 	position.setX(position.getX() + velocity.getX() * delta);
 	position.setY(position.getY() + velocity.getY() * delta);
 	if (position.getX() > 1024 - rect->w || position.getX() < 0) {
-		velocity.setX(-velocity.getX());
+		velocity.setX(0);
 	}
-	if (position.getY() > 768 - rect->h || position.getY() < 0) {
-		velocity.setY(-velocity.getY());
+	if (position.getY() > 768 - rect->h || position.getY() < 60) {
+		velocity.setY(0);
 	}
 }
 

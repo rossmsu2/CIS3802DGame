@@ -19,16 +19,16 @@ int main(int argc, char** argv){
 	// Create an engine.  Must happen early, creates the renderer.
 	Engine engine(1024, 768);
 
-	Wizard* Bob = new Wizard();
-	Bob->setScene(&one);
-	one.addUpdateable(Bob->wizard);
-	one.addDrawable(Bob->wizard);
-	auto Bob_up = [Bob](double delta) { Bob->up(delta); };
-	auto Bob_down = [Bob](double delta) { Bob->down(delta); };
-	auto Bob_fire = [Bob](double delta) { Bob->fire(delta); };
-	one.addKeyEvent(SDLK_w, Bob_up);
-	one.addKeyEvent(SDLK_s, Bob_down);
-	one.addKeyEvent(SDLK_SPACE, Bob_fire);
+	//Wizard* Bob = new Wizard();
+	//Bob->setScene(&one);
+	//one.addUpdateable(Bob->wizard);
+	//one.addDrawable(Bob->wizard);
+	//auto Bob_up = [Bob](double delta) { Bob->up(delta); };
+	//auto Bob_down = [Bob](double delta) { Bob->down(delta); };
+	//auto Bob_fire = [Bob](double delta) { Bob->fire(delta); };
+	//one.addKeyEvent(SDLK_w, Bob_up);
+	//one.addKeyEvent(SDLK_s, Bob_down);
+	//one.addKeyEvent(SDLK_SPACE, Bob_fire);
 
 	std::vector<Zombie*> Freds;
 	Zombie* Fred = new Zombie();

@@ -10,9 +10,11 @@
 class Fireball : public DUGameObject {
 public:
     Fireball();
+    Fireball(Vector3 input);
     ~Fireball();
     void update(double delta);
     void draw();
+    Vector3 getPosition();
 private:
     Vector3 velocity;
 

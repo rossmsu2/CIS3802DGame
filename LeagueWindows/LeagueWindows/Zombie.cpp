@@ -16,5 +16,5 @@ Zombie::~Zombie() {
 }
 
 void Zombie::left(double delta) {
-	zombie->setVelocityX(-50);
+	zombie->setVelocityX(-30);
 }
