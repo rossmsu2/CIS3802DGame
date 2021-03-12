@@ -21,10 +21,10 @@
   <ItemGroup>
     <ClCompile Include="Banana.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Fireball.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Interfaces.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Utility.cpp" />
@@ -34,9 +34,9 @@
   <ItemGroup>
     <ClInclude Include="Banana.hpp" />
     <ClInclude Include="Engine.hpp" />
+    <ClInclude Include="Fireball.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="Interfaces.hpp" />
-    <ClInclude Include="Projectile.hpp" />
     <ClInclude Include="Properties.hpp" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="Sprite.hpp" />

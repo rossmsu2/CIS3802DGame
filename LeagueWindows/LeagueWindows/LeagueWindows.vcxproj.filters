@@ -45,7 +45,7 @@
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Projectile.cpp">
+    <ClCompile Include="Fireball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,7 +80,7 @@
     <ClInclude Include="Zombie.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Projectile.hpp">
+    <ClInclude Include="Fireball.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

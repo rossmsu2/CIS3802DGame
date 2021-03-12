@@ -99,6 +99,23 @@ void Sprite::setVelocityZ(int z) {
 	velocity.setZ(z);
 }
 
+void Sprite::setPositionX(int x) {
+	position.setX(x);
+}
+
+void Sprite::setPositionY(int y) {
+	position.setY(y);
+}
+
+void Sprite::moveSpriteOver(int x, int y) {
+	position.setX(position.getX() + x);
+	position.setY(position.getY() + y);
+}
+
+Vector3 Sprite::getPosition() {
+	return position;
+}
+
 Vector3 Sprite::getVelocity() {
 	return velocity;
 }

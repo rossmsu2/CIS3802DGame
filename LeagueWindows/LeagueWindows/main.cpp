@@ -4,7 +4,9 @@
 #include "Sprite.hpp"
 #include "Wizard.hpp"
 #include "Zombie.hpp"
+#include "Fireball.hpp"
 #include <SDL.h>
+#include <vector>
 
 int main(int argc, char** argv){
 	SDL_Log("Starting up, with following arguments:");
@@ -17,18 +19,22 @@ int main(int argc, char** argv){
 	// Create an engine.  Must happen early, creates the renderer.
 	Engine engine(1024, 768);
 
-	//Sprite* wiz = new Sprite("../assets/wizard.png");
 	Wizard* Bob = new Wizard();
+	Bob->setScene(&one);
 	one.addUpdateable(Bob->wizard);
 	one.addDrawable(Bob->wizard);
 	auto Bob_up = [Bob](double delta) { Bob->up(delta); };
 	auto Bob_down = [Bob](double delta) { Bob->down(delta); };
+	auto Bob_fire = [Bob](double delta) { Bob->fire(delta); };
 	one.addKeyEvent(SDLK_w, Bob_up);
 	one.addKeyEvent(SDLK_s, Bob_down);
+	one.addKeyEvent(SDLK_SPACE, Bob_fire);
 
+	std::vector<Zombie*> Freds;
 	Zombie* Fred = new Zombie();
 	one.addUpdateable(Fred->zombie);
 	one.addDrawable(Fred->zombie);
+	Fred->zombie->moveSpriteOver(1000, 300);
 	Fred->left(0.0);
 
 	// Make a banana and add to scene. Should update and draw.

@@ -6,6 +6,11 @@ Zombie::Zombie() {
 Zombie::Zombie(Sprite* sprite) {
 	zombie = sprite;
 }
+Zombie::Zombie(Sprite* sprite, int x, int y) {
+	zombie = sprite;
+	sprite->setPositionX(x);
+	sprite->setPositionY(y);
+}
 Zombie::~Zombie() {
 	zombie->~Sprite();
 }

@@ -18,6 +18,10 @@ class Sprite : public DUGameObject {
 		void setVelocityX(int x);
 		void setVelocityY(int y);
 		void setVelocityZ(int z);
+		void setPositionX(int x);
+		void setPositionY(int y);
+		void moveSpriteOver(int x, int y);
+		Vector3 getPosition();
 		Vector3 getVelocity();
 	private:
 		Vector3 velocity;
