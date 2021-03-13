@@ -1,48 +1,46 @@
 #include "Engine.hpp"
 #include "Fireball.hpp"
 
-Fireball::Fireball() {
-    surface = IMG_Load("../assets/fireball.png"); // insert the path for the fireball
-    if (surface == NULL) {
+Fireball::Fireball(Wizard* wiz) {
+    fire->surface = IMG_Load("../assets/fireball.png");
+    if (fire->surface == NULL) {
         SDL_Log("Unable to load fireball.");
         exit(1);
     }
-    texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), surface);
-    if (texture == NULL) {
+    fire->texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), fire->surface);
+    if (fire->texture == NULL) {
         SDL_Log("-----> HAVE YOU CREATED THE ENGINE YET? <-----");
         SDL_Log("Unable to create texture. %s", SDL_GetError());
     }
-    rect->x = 0;
-    rect->y = 0;
-    rect->w = surface->w;
-    rect->h = surface->h;
-    velocity.setX(200);
-    velocity.setY(0);
-    velocity.setZ(0);
+    this->wiz = wiz;
+    fire->rect->x = 0;
+    fire->rect->y = 0;
+    fire->rect->w = fire->surface->w;
+    fire->rect->h = fire->surface->h;
+    fire->velocity.setX(100);
+    fire->velocity.setY(0);
+    fire->velocity.setZ(0);
 }
 
 Fireball::~Fireball() {
-    SDL_DestroyTexture(texture);
-    SDL_FreeSurface(surface);
+    fire->~Sprite();
+    wiz->~Wizard();
 }
 
 void Fireball::update(double delta) {
     // So we stop getting the compiler warning for now.
-    position.setX(position.getX() + velocity.getX() * delta);
-    position.setY(position.getY() + velocity.getY() * delta);
-    if (position.getX() > 1024 - rect->w || position.getX() < 0) {
-        velocity.setX(-velocity.getX());
-    }
-    if (position.getY() > 768 - rect->h || position.getY() < 0) {
-        velocity.setY(-velocity.getY());
+    fire->position.setX(fire->position.getX() + fire->velocity.getX() * delta);
+    fire->position.setY(fire->position.getY() + fire->velocity.getY() * delta);
+    if (fire->position.getX() > 1024 - fire->rect->w || fire->position.getX() < 0) {
+        fire->velocity.setX(fire->velocity.getX());
     }
 }
 
 void Fireball::draw() {
     SDL_Rect* dst = new SDL_Rect();
-    dst->x = position.getX();
-    dst->y = position.getY();
-    dst->w = rect->w;
-    dst->h = rect->h;
+    dst->x = fire->position.getX();
+    dst->y = fire->position.getY();
+    dst->w = fire->rect->w;
+    dst->h = fire->rect->h;
     SDL_RenderCopy(Engine::getRenderer(), texture, NULL, dst);
 }

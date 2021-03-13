@@ -1,34 +1,27 @@
 #include "Wizard.hpp"
 #include "Fireball.hpp"
 
-Wizard::Wizard(){
+Wizard::Wizard() {
 	wizard = new Sprite("../assets/wizard.png");
-}
-Wizard::Wizard(Sprite* sprite) {
-	wizard = sprite;
+	wizard->position.setY(61);
 }
 Wizard::~Wizard() {
 	wizard->~Sprite();
 }
-void Wizard::fire(double delta) {
-	Fireball* f = new Fireball();
-	f->position.setX(wizard->getPosition().getX());
-	f->position.setY(wizard->getPosition().getY());
-	f->velocity.setX(100);
-	this->scene->addDrawable(f);
-	this->scene->addUpdateable(f);
+void Wizard::fire() {
+	Fireball* f = new Fireball(this);
+	f->fire->position.setX(wizard->position.getX());
+	f->fire->position.setY(wizard->position.getY());
+	this->scene->addDrawable(f->fire);
+	this->scene->addUpdateable(f->fire);
 }
 void Wizard::up(double delta) {
-	wizard->setVelocityY(-100);
+	wizard->velocity.setY(-1000 * delta);
 }
 void Wizard::down(double delta) {
-	wizard->setVelocityY(100);
+	wizard->velocity.setY(1000 * delta);
 }
 
-void Wizard::setScene(Scene* scene) {
-	this->scene = scene;
+void Wizard::setScene(Scene* s) {
+	this->scene = s;
 }
-
-
-
-

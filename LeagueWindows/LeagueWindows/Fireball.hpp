@@ -6,17 +6,19 @@
 #include "Interfaces.hpp"
 #include "Utility.hpp"
 #include "Scene.hpp"
+#include "Sprite.hpp"
+#include "Wizard.hpp"
 
 class Fireball : public DUGameObject {
 public:
-    Fireball();
+    Fireball(Wizard* wiz);
     ~Fireball();
     void update(double delta);
     void draw();
+    Sprite* fire;
+    Wizard* wiz;
 private:
-    Vector3 velocity;
-
-    friend class Wizard;
+    
 };
 
 #endif

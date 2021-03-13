@@ -9,17 +9,17 @@
 #include "Utility.hpp"
 
 class Scene {
-	public:
-		Scene();
-		~Scene();
-		void addUpdateable(Updateable* obj);
-		void addDrawable(Drawable* obj);
-		void addKeyEvent(SDL_Keycode key, Callback fn);
+public:
+	Scene();
+	~Scene();
+	void addUpdateable(Updateable* obj);
+	void addDrawable(Drawable* obj);
+	void addKeyEvent(SDL_Keycode key, Callback fn);
 
-	private:
-		std::vector<Updateable*> updateables;
-		std::vector<Drawable*> drawables;
-		std::vector<std::pair<SDL_Keycode, Callback > > keyEvents;
+private:
+	std::vector<Updateable*> updateables;
+	std::vector<Drawable*> drawables;
+	std::vector<std::pair<SDL_Keycode, Callback > > keyEvents;
 
 	friend class Engine;
 };

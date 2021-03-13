@@ -8,17 +8,15 @@
 #include "Sprite.hpp"
 
 class Zombie {
-	public:
-		Zombie();
-		Zombie(Sprite* sprite);
-		Zombie(Sprite* sprite, int x, int y);
-		~Zombie();
-		void left(double delta);
-		Sprite* zombie;
-	private:
+public:
+	Zombie();
+	Zombie(int x, int y);
+	~Zombie();
+	void left(double delta);
+	Sprite* zombie;
+private:
 
-	friend class Sprite;
-	
+
 
 };
 

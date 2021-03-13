@@ -1,24 +1,2 @@
-﻿  Banana.cpp
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Banana.cpp(43,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Banana.cpp(44,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Engine.cpp
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Engine.cpp(59,24): warning C4244: 'argument': conversion from 'double' to 'Uint32', possible loss of data
-  Fireball.cpp
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Fireball.cpp(43,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Fireball.cpp(44,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  HUD.cpp
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(19,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(48,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(56,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(57,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Interfaces.cpp
-  main.cpp
-  Scene.cpp
-  Sprite.cpp
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Sprite.cpp(83,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Sprite.cpp(84,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Utility.cpp
-  Wizard.cpp
-  Zombie.cpp
-  Generating Code...
+﻿  Wizard.cpp
   LeagueWindows.vcxproj -> C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\x64\Debug\LeagueWindows.exe

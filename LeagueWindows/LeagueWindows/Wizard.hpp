@@ -7,21 +7,21 @@
 #include "Utility.hpp"
 #include "Sprite.hpp"
 #include "Engine.hpp"
+#include "Scene.hpp"
 
 class Wizard {
 	public:
 		Wizard();
-		Wizard(Sprite* sprite);
 		~Wizard();
-		void fire(double delta);
+		void fire();
 		void up(double delta);
 		void down(double delta);
-		void setScene(Scene* scene);
+		void setScene(Scene* s);
 		Sprite* wizard;
-	private:
 		Scene* scene;
-	friend class Sprite;
-	
+	private:
+		
+		friend class Fireball;
 
 };
 

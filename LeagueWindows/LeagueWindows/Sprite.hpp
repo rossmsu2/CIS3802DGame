@@ -15,16 +15,12 @@ class Sprite : public DUGameObject {
 		~Sprite();
 		void update(double delta);
 		void draw();	
-		void setVelocityX(int x);
-		void setVelocityY(int y);
-		void setVelocityZ(int z);
-		void setPositionX(int x);
-		void setPositionY(int y);
-		void moveSpriteOver(int x, int y);
-		Vector3 getPosition();
-		Vector3 getVelocity();
 	private:
 		Vector3 velocity;
+
+		friend class Wizard;
+		friend class Zombie;
+		friend class Fireball;
 
 };
 

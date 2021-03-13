@@ -3,28 +3,32 @@
 #include "Scene.hpp"
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include "Zombie.hpp"
+#include "Fireball.hpp"
+#include <vector>
+#include "Wizard.hpp"
 
 // For linking purposes, we need to declare this static member in the cpp file.
 SDL_Renderer* Engine::renderer = nullptr;
 
-Engine::Engine(int _width, int _height){
+Engine::Engine(int _width, int _height) {
 	this->width = _width;
 	this->height = _height;
 	frameRate = 1000.0 / FPS;
 	SDL_Init(SDL_INIT_EVERYTHING);
 	TTF_Init();
 	window = SDL_CreateWindow("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
-	if( window == nullptr ){
+	if (window == nullptr) {
 		SDL_Log("Could not create a window. %s", SDL_GetError());
 	}
 	Engine::renderer = SDL_CreateRenderer(window, -1, 0);
-	if( Engine::renderer == nullptr ){
+	if (Engine::renderer == nullptr) {
 		SDL_Log("Could not create a renderer. %s", SDL_GetError());
 	}
 	SDL_Log("Initialized. Frame rate set to %f.", frameRate);
 }
 
-Engine::~Engine(){
+Engine::~Engine() {
 	SDL_Log("Destroying renderer.");
 	SDL_DestroyRenderer(Engine::renderer);
 	SDL_Log("Destroying window.");
@@ -35,8 +39,11 @@ Engine::~Engine(){
 	SDL_Log("Shutdown complete.");
 }
 
-void Engine::run(){
-	if(currentScene == nullptr){
+void Engine::run() {
+	std::vector<Fireball*> Balls;
+	std::vector<Zombie*> Freds;
+
+	if (currentScene == nullptr) {
 		SDL_Log("No scene added yet to engine! - Aborting.");
 		return;
 	}
@@ -44,8 +51,8 @@ void Engine::run(){
 	SDL_Event event;
 	last = SDL_GetTicks();
 	cumulative = 0;
-	while(!quit){
-		if(cumulative>=1000){
+	while (!quit) {
+		if (cumulative >= 1000) {
 			SDL_Log("Framerate is %f (%d frames).", (double)framecount / (cumulative / 1000), framecount);
 			cumulative = 0;
 			framecount = 0;
@@ -55,42 +62,69 @@ void Engine::run(){
 		int delta = current - last;
 
 		// delta should be atleast the target framerate before we continue
-		while(delta < frameRate) {
+		while (delta < frameRate) {
 			SDL_Delay(frameRate - delta);
 			current = SDL_GetTicks();
 			delta = current - last;
 		}
 
+		//if ((rand() % 100 + 1) >= 95 && Freds.size() < 30) {
+			//Zombie* z = new Zombie(950, rand() % 650 + 60);
+			//z->left(delta);
+			//currentScene->addDrawable(z->zombie);
+			//currentScene->addUpdateable(z->zombie);
+			//Freds.push_back(z);
+		//}
+
 		cumulative += delta;
 		double gameDelta = delta / 1000.0;
 
+		//for (auto i = Balls.begin(); i != Balls.end(); i++) {
+			//if ((*i)->position.getX() >= 970) {
+				//Fireball* temp = (*i);
+				//Balls.erase(i);
+				//i = i - 1;
+				//temp->~Fireball();
+			//}
+		//}
+
 		// Get events
-		while(SDL_PollEvent(&event) > 0){
-			if(event.type == SDL_QUIT){
+		while (SDL_PollEvent(&event) > 0) {
+			if (event.type == SDL_QUIT) {
 				quit = true;
 			}
 
 			// Check for keyboard events
-			if(event.type == SDL_KEYDOWN || event.type == SDL_KEYUP){
-				for(auto f = currentScene->keyEvents.begin(); f != currentScene->keyEvents.end(); ++f){
-					if(event.key.keysym.sym == (*f).first){
+			if ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) && event.key.repeat == 0) {
+				//if (event.key.keysym.sym == SDLK_SPACE) {
+					//if (Balls.size() < 20) {
+						//Fireball* ball = new Fireball(Bob);
+						//currentScene->addDrawable(ball);
+						//currentScene->addUpdateable(ball);
+						//ball->shoot();
+						//Balls.push_back(ball);
+					//}
+				//}
+				for (auto f = currentScene->keyEvents.begin(); f != currentScene->keyEvents.end(); ++f) {
+					if (event.key.keysym.sym == (*f).first) {
 						(*f).second(gameDelta);
 						//SDL_Log("Dispatched event. %d, %f", delta, gameDelta);
 					}
+
 				}
 			}
 
 		}
 
 		// Update objects
-		for(std::vector<Updateable*>::iterator it = currentScene->updateables.begin(); it != currentScene->updateables.end(); ++it){
+		for (std::vector<Updateable*>::iterator it = currentScene->updateables.begin(); it != currentScene->updateables.end(); ++it) {
 			(*it)->update(gameDelta);
-		}			
+		}
 
-		SDL_SetRenderDrawColor(Engine::renderer, BGR, BGG, BGB, BGA);
+		SDL_SetRenderDrawColor(Engine::renderer, 0, 0, 0, 255);
 		SDL_RenderClear(Engine::renderer);
 		// Render
-		for(std::vector<Drawable*>::iterator it = currentScene->drawables.begin(); it != currentScene->drawables.end(); ++it){
+		for (std::vector<Drawable*>::iterator it = currentScene->drawables.begin(); it != currentScene->drawables.end(); ++it) {
 			(*it)->draw();
 		}
 		SDL_RenderPresent(Engine::renderer);
@@ -99,14 +133,14 @@ void Engine::run(){
 	}
 }
 
-void Engine::setFrameRate(double _frameRate){
+void Engine::setFrameRate(double _frameRate) {
 	this->frameRate = _frameRate;
 }
 
-void Engine::setScene(Scene* scene){
-	this->currentScene = scene;	
+void Engine::setScene(Scene* scene) {
+	this->currentScene = scene;
 }
 
-SDL_Renderer* Engine::getRenderer(){
+SDL_Renderer* Engine::getRenderer() {
 	return Engine::renderer;
 }
