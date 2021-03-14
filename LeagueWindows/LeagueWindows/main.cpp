@@ -5,6 +5,7 @@
 #include "Wizard.hpp"
 #include "Zombie.hpp"
 #include "Fireball.hpp"
+#include "Spawner.hpp"
 #include <SDL.h>
 #include <vector>
 
@@ -19,21 +20,10 @@ int main(int argc, char** argv) {
 	// Create an engine.  Must happen early, creates the renderer.
 	Engine engine(1024, 768);
 
-	//Wizard* Bob = new Wizard();
-	//Bob->setScene(&one);
-	//one.addUpdateable(Bob->wizard);
-	//one.addDrawable(Bob->wizard);
-	//auto Bob_up = [Bob](double delta) { Bob->up(delta); };
-	//auto Bob_down = [Bob](double delta) { Bob->down(delta); };
-	//auto Bob_fire = [Bob](double delta) { Bob->fire(delta); };
-	//one.addKeyEvent(SDLK_w, Bob_up);
-	//one.addKeyEvent(SDLK_s, Bob_down);
-	//one.addKeyEvent(SDLK_SPACE, Bob_fire);
-
 	Wizard* Bob = new Wizard();
 	Bob->setScene(&one);
-	one.addUpdateable(Bob->wizard);
-	one.addDrawable(Bob->wizard);
+	one.addUpdateable(Bob);
+	one.addDrawable(Bob);
 
 	auto Bob_up = [Bob](double delta) { Bob->up(delta); };
 	auto Bob_down = [Bob](double delta) { Bob->down(delta); };
@@ -42,6 +32,9 @@ int main(int argc, char** argv) {
 	one.addKeyEvent(SDLK_w, Bob_up);
 	one.addKeyEvent(SDLK_s, Bob_down);
 	one.addKeyEvent(SDLK_SPACE, Bob_fire);
+
+	Spawner* spawn = new Spawner(&one);
+	one.addUpdateable(spawn);
 
 	//std::vector<Zombie*> Freds;
 	//Zombie* Fred = new Zombie(950, 300);

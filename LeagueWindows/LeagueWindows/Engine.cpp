@@ -40,9 +40,6 @@ Engine::~Engine() {
 }
 
 void Engine::run() {
-	std::vector<Fireball*> Balls;
-	std::vector<Zombie*> Freds;
-
 	if (currentScene == nullptr) {
 		SDL_Log("No scene added yet to engine! - Aborting.");
 		return;
@@ -68,25 +65,8 @@ void Engine::run() {
 			delta = current - last;
 		}
 
-		//if ((rand() % 100 + 1) >= 95 && Freds.size() < 30) {
-			//Zombie* z = new Zombie(950, rand() % 650 + 60);
-			//z->left(delta);
-			//currentScene->addDrawable(z->zombie);
-			//currentScene->addUpdateable(z->zombie);
-			//Freds.push_back(z);
-		//}
-
 		cumulative += delta;
 		double gameDelta = delta / 1000.0;
-
-		//for (auto i = Balls.begin(); i != Balls.end(); i++) {
-			//if ((*i)->position.getX() >= 970) {
-				//Fireball* temp = (*i);
-				//Balls.erase(i);
-				//i = i - 1;
-				//temp->~Fireball();
-			//}
-		//}
 
 		// Get events
 		while (SDL_PollEvent(&event) > 0) {
@@ -95,16 +75,7 @@ void Engine::run() {
 			}
 
 			// Check for keyboard events
-			if ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) && event.key.repeat == 0) {
-				//if (event.key.keysym.sym == SDLK_SPACE) {
-					//if (Balls.size() < 20) {
-						//Fireball* ball = new Fireball(Bob);
-						//currentScene->addDrawable(ball);
-						//currentScene->addUpdateable(ball);
-						//ball->shoot();
-						//Balls.push_back(ball);
-					//}
-				//}
+			if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
 				for (auto f = currentScene->keyEvents.begin(); f != currentScene->keyEvents.end(); ++f) {
 					if (event.key.keysym.sym == (*f).first) {
 						(*f).second(gameDelta);
@@ -127,6 +98,10 @@ void Engine::run() {
 		for (std::vector<Drawable*>::iterator it = currentScene->drawables.begin(); it != currentScene->drawables.end(); ++it) {
 			(*it)->draw();
 		}
+
+		currentScene->addAllNew();
+		currentScene->deleteAll();
+
 		SDL_RenderPresent(Engine::renderer);
 
 		framecount++;

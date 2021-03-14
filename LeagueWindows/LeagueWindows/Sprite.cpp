@@ -2,9 +2,9 @@
 #include "Sprite.hpp"
 
 Sprite::Sprite() {
-	surface = IMG_Load("./assets/banana.png");
+	surface = IMG_Load("../assets/banana.png");
 	if (surface == NULL) {
-		SDL_Log("Unable to load Sprite.");
+		SDL_Log("Unable to load SPRITE.");
 		exit(1);
 	}
 	texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), surface);
@@ -24,7 +24,7 @@ Sprite::Sprite() {
 Sprite::Sprite(std::string Image) {
 	surface = IMG_Load(Image.c_str());
 	if (surface == NULL) {
-		SDL_Log("Unable to load Sprite.");
+		SDL_Log("Unable to load SPRITE.");
 		exit(1);
 	}
 	texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), surface);
@@ -70,12 +70,7 @@ void Sprite::update(double delta) {
 	// So we stop getting the compiler warning for now.
 	position.setX(position.getX() + velocity.getX() * delta);
 	position.setY(position.getY() + velocity.getY() * delta);
-	if (position.getX() > 1024 - rect->w || position.getX() < 0) {
-		velocity.setX(0);
-	}
-	if (position.getY() > 768 - rect->h || position.getY() < 60) {
-		velocity.setY(0);
-	}
+
 }
 
 void Sprite::draw() {

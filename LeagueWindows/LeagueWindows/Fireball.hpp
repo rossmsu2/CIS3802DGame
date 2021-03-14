@@ -9,16 +9,14 @@
 #include "Sprite.hpp"
 #include "Wizard.hpp"
 
-class Fireball : public DUGameObject {
+class Fireball : public Sprite {
 public:
-    Fireball(Wizard* wiz);
+    Fireball(Scene* s);
     ~Fireball();
     void update(double delta);
     void draw();
-    Sprite* fire;
-    Wizard* wiz;
 private:
-    
+    Scene* scene;
 };
 
 #endif

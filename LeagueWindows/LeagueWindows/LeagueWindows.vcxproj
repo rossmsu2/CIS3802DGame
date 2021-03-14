@@ -22,10 +22,12 @@
     <ClCompile Include="Banana.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Fireball.cpp" />
+    <ClCompile Include="GameStatus.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Interfaces.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Wizard.cpp" />
@@ -35,6 +37,8 @@
     <ClInclude Include="Banana.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="Fireball.hpp" />
+    <ClInclude Include="GameStatus.hpp" />
+    <ClInclude Include="Spawner.hpp" />
     <ClInclude Include="HUD.hpp" />
     <ClInclude Include="Interfaces.hpp" />
     <ClInclude Include="Properties.hpp" />

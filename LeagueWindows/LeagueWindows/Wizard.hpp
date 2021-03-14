@@ -9,7 +9,7 @@
 #include "Engine.hpp"
 #include "Scene.hpp"
 
-class Wizard {
+class Wizard : public Sprite {
 	public:
 		Wizard();
 		~Wizard();
@@ -17,7 +17,6 @@ class Wizard {
 		void up(double delta);
 		void down(double delta);
 		void setScene(Scene* s);
-		Sprite* wizard;
 		Scene* scene;
 	private:
 		

@@ -6,17 +6,16 @@
 #include "Interfaces.hpp"
 #include "Utility.hpp"
 #include "Sprite.hpp"
+#include "Scene.hpp"
 
-class Zombie {
+class Zombie : public Sprite {
 public:
 	Zombie();
 	Zombie(int x, int y);
 	~Zombie();
 	void left(double delta);
-	Sprite* zombie;
+	void update(double delta);
 private:
-
-
 
 };
 
