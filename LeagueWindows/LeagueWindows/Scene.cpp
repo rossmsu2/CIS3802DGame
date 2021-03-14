@@ -15,8 +15,10 @@ void Scene::addUpdateable(Updateable* obj) {
     this->updateables.push_back(obj);
 }
 
-void Scene::addNewObject(Updateable* obj) {
-    this->newObjects.push_back(obj);
+void Scene::addNewObject(Updateable* objU, Drawable* objD) {
+    this->newObjects.push_back(objU);
+    this->newDObjects.push_back(objD);
+
 }
 
 void Scene::addDrawable(Drawable* obj) {
@@ -31,11 +33,16 @@ void Scene::addAllNew() {
     for (auto it = this->newObjects.begin(); it != newObjects.end(); ++it) {
         this->updateables.push_back(*it);
     }
+    for (auto it = this->newDObjects.begin(); it != newDObjects.end(); ++it) {
+        this->drawables.push_back(*it);
+    }
     this->newObjects.clear();
+    this->newDObjects.clear();
 }
 
-void Scene::objectsToDelete(Updateable* obj) {
-    this->deleteObjects.push_back(obj);
+void Scene::objectsToDelete(Updateable* objU, Drawable* objD) {
+    this->deleteObjects.push_back(objU);
+    this->deleteDObjects.push_back(objD);
 }
 
 void Scene::deleteAll() {
@@ -45,5 +52,12 @@ void Scene::deleteAll() {
         it--;
         i++;
     }
+    i = 0;
+    for (auto it = this->deleteDObjects.begin(); it != deleteDObjects.end(); ++it) {
+        this->drawables.erase(this->deleteDObjects.begin() + i);
+        it--;
+        i++;
+    }
     this->deleteObjects.clear();
+    this->deleteDObjects.clear();
 }

@@ -29,8 +29,6 @@ Fireball::Fireball(Scene* s) {
 }
 
 Fireball::~Fireball() {
-    SDL_DestroyTexture(texture);
-    SDL_FreeSurface(surface);
     counter = counter - 1;
 }
 
@@ -39,7 +37,8 @@ void Fireball::update(double delta) {
     position.setX(position.getX() + velocity.getX() * delta);
     position.setY(position.getY() + velocity.getY() * delta);
     if (position.getX() > 1024 - rect->w) {
-        this->scene->objectsToDelete(this);
+        this->scene->objectsToDelete(this, this);
+        delete this;
     }
 }
 

@@ -15,9 +15,9 @@ public:
 	void addUpdateable(Updateable* obj);
 	void addDrawable(Drawable* obj);
 	void addKeyEvent(SDL_Keycode key, Callback fn);
-	void addNewObject(Updateable* obj);
+	void addNewObject(Updateable* objU, Drawable* objD);
 	void addAllNew();
-	void objectsToDelete(Updateable* obj);
+	void objectsToDelete(Updateable* objU, Drawable* objD);
 	void deleteAll();
 
 private:
@@ -25,6 +25,8 @@ private:
 	std::vector<Updateable*> deleteObjects;
 	std::vector<Updateable*> updateables;
 	std::vector<Drawable*> drawables;
+	std::vector<Drawable*> newDObjects;
+	std::vector<Drawable*> deleteDObjects;
 	std::vector<std::pair<SDL_Keycode, Callback > > keyEvents;
 
 	friend class Engine;

@@ -14,8 +14,7 @@ void Spawner::update(double delta) {
 		try {
 			Zombie* z = new Zombie(950, rand() % 650 + 60);
 			z->left(delta);
-			this->scene->addNewObject(z);
-			this->scene->addDrawable(z);
+			this->scene->addNewObject(z, z);
 		}
 		catch (int x) {
 		
