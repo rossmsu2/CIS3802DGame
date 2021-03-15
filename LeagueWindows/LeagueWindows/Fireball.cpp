@@ -23,7 +23,7 @@ Fireball::Fireball(Scene* s) {
     rect->y = 0;
     rect->w = surface->w;
     rect->h = surface->h;
-    velocity.setX(100);
+    velocity.setX(1000);
     velocity.setY(0);
     velocity.setZ(0);
 }
@@ -38,7 +38,7 @@ void Fireball::update(double delta) {
     position.setY(position.getY() + velocity.getY() * delta);
     if (position.getX() > 1024 - rect->w) {
         this->scene->objectsToDelete(this, this);
-        delete this;
+        /*delete this;*/
     }
 }
 

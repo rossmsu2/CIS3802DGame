@@ -1,5 +1,6 @@
 #include "Zombie.hpp"
 #include "Engine.hpp"
+#include "HUD.hpp"
 
 static int counter = 0;
 
@@ -62,10 +63,12 @@ void Zombie::update(double delta) {
     position.setX(position.getX() + velocity.getX() * delta);
     position.setY(position.getY() + velocity.getY() * delta);
     if (position.getX() <= 60) {
-        
+        HUD* temp = new HUD();
+        temp->gameEnd();
+        velocity.setX(0);
     }
 }
 
 void Zombie::left(double delta) {
-	velocity.setX(-250 * delta);
+	velocity.setX(-250* delta);
 }

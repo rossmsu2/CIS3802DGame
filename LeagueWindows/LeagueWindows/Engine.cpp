@@ -7,6 +7,7 @@
 #include "Fireball.hpp"
 #include <vector>
 #include "Wizard.hpp"
+#include "Collision.hpp"
 
 // For linking purposes, we need to declare this static member in the cpp file.
 SDL_Renderer* Engine::renderer = nullptr;
@@ -40,6 +41,7 @@ Engine::~Engine() {
 }
 
 void Engine::run() {
+	Collision* collide = new Collision();
 	if (currentScene == nullptr) {
 		SDL_Log("No scene added yet to engine! - Aborting.");
 		return;
@@ -86,19 +88,19 @@ void Engine::run() {
 			}
 
 		}
-
+		
 		// Update objects
 		for (std::vector<Updateable*>::iterator it = currentScene->updateables.begin(); it != currentScene->updateables.end(); ++it) {
 			(*it)->update(gameDelta);
 		}
-
+		
 		SDL_SetRenderDrawColor(Engine::renderer, 0, 0, 0, 255);
 		SDL_RenderClear(Engine::renderer);
 		// Render
 		for (std::vector<Drawable*>::iterator it = currentScene->drawables.begin(); it != currentScene->drawables.end(); ++it) {
 			(*it)->draw();
 		}
-
+		collide->check(currentScene->updateables);
 		currentScene->addAllNew();
 		currentScene->deleteAll();
 

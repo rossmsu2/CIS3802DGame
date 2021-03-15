@@ -4,6 +4,8 @@
 #include <random>
 #include <ctime>
 
+static int gameStatus = 0;
+
 HUD::HUD() {
 	font = TTF_OpenFont("../assets/Mystical Snow.ttf", 32);
 	if (font == NULL) {
@@ -40,12 +42,20 @@ HUD::~HUD() {
 }
 
 void HUD::update(double delta) {
-	clockEnd = std::chrono::steady_clock::now();
-	elapsedTime = std::chrono::duration<float>(clockEnd - clockStart).count();
-	elapsedTime = round(elapsedTime * 100.0) / 100.0;
-	display = "Zombies Killed: " + std::to_string(zombies) + " Time: " + std::to_string(elapsedTime);
-	surface = TTF_RenderText_Solid(font, display.c_str(), color);
-	texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), surface);
+	if (gameStatus == 0) {
+		clockEnd = std::chrono::steady_clock::now();
+		elapsedTime = std::chrono::duration<float>(clockEnd - clockStart).count();
+		elapsedTime = round(elapsedTime * 100.0) / 100.0;
+		display = "Zombies Killed: " + std::to_string(zombies) + " Time: " + std::to_string(elapsedTime);
+		surface = TTF_RenderText_Solid(font, display.c_str(), color);
+		texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), surface);
+	}
+	else {
+		display = "Zombies Killed: " + std::to_string(zombies) + " Time: " + std::to_string(elapsedTime) + "\tGAME OVER";
+		surface = TTF_RenderText_Solid(font, display.c_str(), color);
+		texture = SDL_CreateTextureFromSurface(Engine::getRenderer(), surface);
+	}
+	
 }
 
 void HUD::draw() {
@@ -55,4 +65,8 @@ void HUD::draw() {
 	dst->w = rect->w;
 	dst->h = rect->h;
 	SDL_RenderCopy(Engine::getRenderer(), texture, NULL, dst);
+}
+
+void HUD::gameEnd() {
+	gameStatus = 1;
 }

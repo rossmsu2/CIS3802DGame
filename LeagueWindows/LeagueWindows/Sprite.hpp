@@ -15,6 +15,7 @@ class Sprite : public DUGameObject {
 		~Sprite();
 		void update(double delta);
 		void draw();	
+		Vector3 getPos();
 	private:
 		Vector3 velocity;
 

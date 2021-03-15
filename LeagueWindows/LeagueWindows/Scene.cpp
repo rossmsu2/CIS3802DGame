@@ -2,6 +2,8 @@
 #include "Interfaces.hpp"
 #include "Utility.hpp"
 #include "Scene.hpp"
+#include <string>
+
 
 Scene::Scene() {
 
@@ -43,21 +45,15 @@ void Scene::addAllNew() {
 void Scene::objectsToDelete(Updateable* objU, Drawable* objD) {
     this->deleteObjects.push_back(objU);
     this->deleteDObjects.push_back(objD);
+
 }
 
 void Scene::deleteAll() {
-    int i = 0;
-    for (auto it = this->deleteObjects.begin(); it != deleteObjects.end(); ++it) {
-        this->updateables.erase(this->deleteObjects.begin() + i);
-        it--;
-        i++;
+    
+    for (auto it = this->deleteObjects.begin(); it != deleteObjects.end(); it++) {
+        this->updateables.erase(it);
     }
-    i = 0;
-    for (auto it = this->deleteDObjects.begin(); it != deleteDObjects.end(); ++it) {
-        this->drawables.erase(this->deleteDObjects.begin() + i);
-        it--;
-        i++;
+    for (auto it = this->deleteDObjects.begin(); it != deleteDObjects.end(); it++) {
+       this->drawables.erase(it);
     }
-    this->deleteObjects.clear();
-    this->deleteDObjects.clear();
 }

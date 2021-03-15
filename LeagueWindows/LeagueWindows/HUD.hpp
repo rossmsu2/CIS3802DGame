@@ -16,6 +16,7 @@ class HUD : public DUGameObject {
 		~HUD();
 		void update(double delta);
 		void draw();	
+		void gameEnd();
 	private:
 		TTF_Font* font;
 		SDL_Color color;
@@ -28,6 +29,7 @@ class HUD : public DUGameObject {
 		std::chrono::time_point<std::chrono::high_resolution_clock> clockEnd;
 		float elapsedTime;
 		std::string display;
+
 
 };
 
