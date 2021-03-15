@@ -8,19 +8,20 @@
 #include <string>
 
 class Sprite : public DUGameObject {
-	public:
-        Sprite();
-		Sprite(std::string Image);
-        Sprite(SDL_Surface* inputSurface);
-		~Sprite();
-		void update(double delta);
-		void draw();	
-	private:
-		Vector3 velocity;
+public:
+	Sprite();
+	Sprite(std::string Image);
+	Sprite(SDL_Surface* inputSurface);
+	~Sprite();
+	void update(double delta);
+	void draw();
+	Vector3 getPos();
+private:
+	Vector3 velocity;
 
-		friend class Wizard;
-		friend class Zombie;
-		friend class Fireball;
+	friend class Wizard;
+	friend class Zombie;
+	friend class Fireball;
 
 };
 

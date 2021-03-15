@@ -81,3 +81,7 @@ void Sprite::draw() {
 	dst->h = rect->h;
 	SDL_RenderCopy(Engine::getRenderer(), texture, NULL, dst);
 }
+
+Vector3 Sprite::getPos() {
+	return this->position;
+}

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Banana.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Fireball.cpp" />
     <ClCompile Include="GameStatus.cpp" />
@@ -35,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Banana.hpp" />
+    <ClInclude Include="Collision.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="Fireball.hpp" />
     <ClInclude Include="GameStatus.hpp" />

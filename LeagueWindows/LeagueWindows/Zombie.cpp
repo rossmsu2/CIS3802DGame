@@ -1,5 +1,6 @@
 #include "Zombie.hpp"
 #include "Engine.hpp"
+#include "HUD.hpp"
 
 static int counter = 0;
 
@@ -8,7 +9,7 @@ Zombie::Zombie() {
     if (counter > 10) {
         throw 99;
     }
-	surface = IMG_Load("../assets/zombie.png");
+    surface = IMG_Load("../assets/zombie.png");
     if (surface == NULL) {
         SDL_Log("Unable to load zombie.");
         exit(1);
@@ -48,8 +49,8 @@ Zombie::Zombie(int x, int y) {
     velocity.setX(0);
     velocity.setY(0);
     velocity.setZ(0);
-	position.setX(x);
-	position.setY(y);
+    position.setX(x);
+    position.setY(y);
 }
 Zombie::~Zombie() {
     SDL_DestroyTexture(texture);
@@ -62,10 +63,12 @@ void Zombie::update(double delta) {
     position.setX(position.getX() + velocity.getX() * delta);
     position.setY(position.getY() + velocity.getY() * delta);
     if (position.getX() <= 60) {
-        
+        HUD* temp = new HUD();
+        temp->gameEnd();
+        velocity.setX(0);
     }
 }
 
 void Zombie::left(double delta) {
-	velocity.setX(-250 * delta);
+    velocity.setX(-250 * delta);
 }

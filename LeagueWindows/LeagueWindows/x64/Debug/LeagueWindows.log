@@ -1,16 +1,29 @@
-﻿  Fireball.cpp
+﻿  Banana.cpp
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Banana.cpp(43,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Banana.cpp(44,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Collision.cpp
+  Engine.cpp
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Engine.cpp(65,24): warning C4244: 'argument': conversion from 'double' to 'Uint32', possible loss of data
+  Fireball.cpp
 C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Fireball.cpp(47,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Fireball.cpp(48,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  GameStatus.cpp
   HUD.cpp
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(19,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(45,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(53,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(54,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(21,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(48,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(63,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\HUD.cpp(64,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Interfaces.cpp
+  main.cpp
+  Scene.cpp
   Spawner.cpp
 C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Spawner.cpp(19,14): warning C4101: 'x': unreferenced local variable
   Sprite.cpp
 C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Sprite.cpp(78,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Sprite.cpp(79,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Utility.cpp
+  Wizard.cpp
+C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\LeagueWindows\Wizard.cpp(36,13): warning C4101: 'x': unreferenced local variable
   Zombie.cpp
   Generating Code...
   LeagueWindows.vcxproj -> C:\Users\rossk\CIS380\CIS3802DGame\LeagueWindows\x64\Debug\LeagueWindows.exe
